@@ -1,4 +1,5 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+// import { html } from '../../node_modules/lit-html/lit-html.js';
+import {html, render} from 'https://unpkg.com/lit-html?module';
 import { addItem } from '../api/data.js'
 
 const editTemplate = (album, onSubmit) => html`<div class="row space-top">

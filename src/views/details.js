@@ -1,5 +1,6 @@
 import { getItemById, deleteItem } from '../api/data.js'
-import { html } from '../../node_modules/lit-html/lit-html.js';
+// import { html } from '../../node_modules/lit-html/lit-html.js';
+import {html, render} from 'https://unpkg.com/lit-html?module';
 
 const detailTemplate = (item, onDelete, isOwner) => html`<div class="row space-top">
     <div class="col-md-12">
