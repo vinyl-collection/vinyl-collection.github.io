@@ -5,21 +5,21 @@ import { render} from 'https://unpkg.com/lit-html?module';
 
 
 import { loginPage } from './views/login.js'
-import { catalogPage } from './views/catalog.js'
+import { homePage } from './views/home.js'
 import { addPage } from './views/add.js'
 import { detailPage } from './views/details.js'
 import { editPage } from './views/edit.js'
-import { registerPage } from './views/register.js'
-import { mainPage } from './views/main.js'
+import { searchPage } from './views/search.js'
+import { catalogPage } from './views/catalog.js'
 
 
 const main = document.querySelector('.container')
 
 
-page('/', contextModerate, mainPage)
+page('/', contextModerate, homePage)
 page('/add', contextModerate, addPage)
 page('/login', contextModerate, loginPage)
-page('/register', contextModerate, registerPage)
+page('/search', contextModerate, searchPage)
 page('/details/:id', contextModerate, detailPage)
 page('/edit/:id', contextModerate, editPage)
 page('/catalog', contextModerate, catalogPage)

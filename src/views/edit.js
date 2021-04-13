@@ -61,13 +61,15 @@ export async function editPage (ctx) {
         if (Object.entries(data).filter(([k, v]) => k != 'songs').some(([k, v]) => v == '')) {
             return alert('Missing fields!')
         }
-
+       
+        const songs = data.songs.split(',');
 
         const vinyl = {
             artist: data.artist,
             year: data.year,
             title: data.title,
             img: data.img,
+            songs: songs,
             ownerId: sessionStorage.getItem('userId')
         }
         const response = await fetch('https://parseapi.back4app.com/classes/Records/' + id, {

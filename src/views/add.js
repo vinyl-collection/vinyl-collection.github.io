@@ -3,7 +3,7 @@ import {html} from 'https://unpkg.com/lit-html?module';
 
 const createTemplate = (onSubmit) => html`<div class="row space-top">
     <div class="col-md-12">
-        <h1>Create New Furniture</h1>
+        <h1>Add New Album</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>

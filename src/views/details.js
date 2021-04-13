@@ -19,6 +19,7 @@ const detailTemplate = (item, onDelete, isOwner) => html`<div class="row space-t
         <p>Artist: <span>${item.artist}</span></p>
         <p>Title: <span>${item.title}</span></p>
         <p>Released on: <span>${item.year}</span></p>
+        ${item.songs ? item.songs.map(s => html`<li>${s}</li>`) : ''}
         ${isOwner ? html`
         <div>
             <a href=${`/edit/${item.objectId}`} class="btn btn-info">Edit</a>
