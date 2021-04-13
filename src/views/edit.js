@@ -1,5 +1,5 @@
 // import { html } from '../../node_modules/lit-html/lit-html.js';
-import {html} from 'https://unpkg.com/lit-html?module';
+import { html } from 'https://unpkg.com/lit-html?module';
 
 const editTemplate = (album, onSubmit) => html`<div class="row space-top">
     <div class="col-md-12">
@@ -38,7 +38,7 @@ const editTemplate = (album, onSubmit) => html`<div class="row space-top">
     </div>
 </form>`;
 
-export async function editPage (ctx) {
+export async function editPage(ctx) {
     const id = ctx.params.id
     const item = await fetch('https://parseapi.back4app.com/classes/Records/' + id, {
         method: 'get',
@@ -51,7 +51,7 @@ export async function editPage (ctx) {
 
     ctx.render(editTemplate(album, onSubmit))
 
-   async function onSubmit(e) {
+    async function onSubmit(e) {
         e.preventDefault();
 
         const formData = new FormData(e.target)
@@ -61,8 +61,17 @@ export async function editPage (ctx) {
         if (Object.entries(data).filter(([k, v]) => k != 'songs').some(([k, v]) => v == '')) {
             return alert('Missing fields!')
         }
-       
+
         const songs = data.songs.split(',');
+        
+        if (!(typeof songs[0].charAt(0) === Number ) && !(songs[0].charAt(1) == '.' || songs[0].charAt(2) == '.')){
+
+            console.log('in');
+            for (let i = 0; i < songs.length; i++) {
+                const song = i + 1 + '. ' + songs[i]
+                songs[i] = song
+            }
+        }
 
         const vinyl = {
             artist: data.artist,
@@ -72,16 +81,27 @@ export async function editPage (ctx) {
             songs: songs,
             ownerId: sessionStorage.getItem('userId')
         }
-        const response = await fetch('https://parseapi.back4app.com/classes/Records/' + id, {
-            method: 'put',
-            headers: {
-                'X-Parse-Application-Id': 'O9536xcOJvMSZHH5vnqYtvmLvMKp0WgAMRiZYJa6',
-                'X-Parse-REST-API-Key': 'Bxn7IjJ2Q94FLIJAQW0IYOIBlSOniIuHXN4eNFcw',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(vinyl)
+        // const response = await fetch('https://parseapi.back4app.com/classes/Records/' + id, {
+        //     method: 'put',
+        //     headers: {
+        //         'X-Parse-Application-Id': 'O9536xcOJvMSZHH5vnqYtvmLvMKp0WgAMRiZYJa6',
+        //         'X-Parse-REST-API-Key': 'Bxn7IjJ2Q94FLIJAQW0IYOIBlSOniIuHXN4eNFcw',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(vinyl)
+        // })
+        Parse.initialize("O9536xcOJvMSZHH5vnqYtvmLvMKp0WgAMRiZYJa6", "PbgdreDcCM9RtMvcUnlZIHBNdcqUDCHTDqmMCbAX"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+        Parse.serverURL = "https://parseapi.back4app.com/";
+        const query = new Parse.Query('Records');
+        query.get(id).then((object) => {
+            object.set('artist', data.artist);
+            object.set('title', data.title);
+            object.set('year', data.year);
+            object.set('img', data.img);
+            object.set('ownerId', sessionStorage.getItem('userId'));
+            object.set('songs', songs);
+            object.save()
         })
-
         ctx.page.redirect('/details/' + album.objectId)
     }
 }

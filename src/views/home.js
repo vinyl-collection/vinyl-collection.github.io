@@ -55,6 +55,7 @@ export async function homePage(ctx) {
                 ctx.render(dashboardTemplate(allRecords))
                 limit++
             }
+            return
         }
         
         window.onscroll = yHandler;
