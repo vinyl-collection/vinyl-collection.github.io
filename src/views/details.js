@@ -46,9 +46,7 @@ export async function detailPage(ctx) {
     const album = await item.json()
     const isOwner = userId == album.ownerId;
 
-    console.log(userId);
-    console.log(album.ownerId);
-    console.log(isOwner);
+    
     ctx.render(detailTemplate(album, onDelete, isOwner))
 
     async function onDelete() {
