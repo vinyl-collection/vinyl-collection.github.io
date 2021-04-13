@@ -234,3 +234,45 @@ img {
     width: 300px;
 height: 400px;
 }
+/* Catalog */
+h3.no-articles {
+    color: black;
+    margin-left: 25px;
+}
+
+.recent article>p {
+    height: 130px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border-bottom:  2px solid #0e69a0;
+}
+
+.article-preview {
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: 75px;
+    background-color: #0e69a0;
+    border-radius: 30px;
+}
+
+.article-preview:hover {
+    background-color: #094162;
+    color: white;
+}
+
+.article-preview h3 {
+    background-color: #0e69a0(47, 79, 79, 0.404);
+    color: #fff;
+    margin-left: 30px;
+}
+
+.article-preview p {
+    color: #fff;
+    margin-left: 30px;
+
+}
+
+#catalog-page h1{
+    margin-left: 30px;
+}

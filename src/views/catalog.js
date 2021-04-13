@@ -30,7 +30,7 @@ const itemTemplate = (item) => html`
     </div>
 </div>`;
 
-export async function mainPage(ctx) {
+export async function catalogPage(ctx) {
 
     const response = await fetch('https://parseapi.back4app.com/classes/Records', {
         method: 'get',

@@ -77,7 +77,7 @@ export async function editPage (ctx) {
                 'X-Parse-REST-API-Key': 'Bxn7IjJ2Q94FLIJAQW0IYOIBlSOniIuHXN4eNFcw',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(vinyl)
         })
 
         ctx.page.redirect('/details/' + album.objectId)
