@@ -2,9 +2,6 @@
 import { register } from '../api/data.js'
 import {html} from 'https://unpkg.com/lit-html?module';
 
-
-
-
 const registerTemplate = (onSubmit, errorMsg, invalidEmail, invalidPass, invalidRe) => html`
 <div class="row space-top">
     <div class="col-md-12">

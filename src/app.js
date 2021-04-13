@@ -9,6 +9,7 @@ import { mainPage } from './views/dashboard.js'
 import { addPage } from './views/add.js'
 import { detailPage } from './views/details.js'
 import { editPage } from './views/edit.js'
+import { registerPage } from './views/register.js'
 
 
 const main = document.querySelector('.container')
@@ -17,7 +18,7 @@ const main = document.querySelector('.container')
 page('/', contextModerate, mainPage)
 page('/add', contextModerate, addPage)
 page('/login', contextModerate, loginPage)
-//page('/register', contextModerate, registerPage)
+page('/register', contextModerate, registerPage)
 page('/details/:id', contextModerate, detailPage)
 page('/edit/:id', contextModerate, editPage)
 
