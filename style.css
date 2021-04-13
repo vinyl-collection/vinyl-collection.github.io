@@ -262,7 +262,7 @@ h3.no-articles {
 }
 
 .article-preview h3 {
-    background-color: #0e69a0;
+    background-color: #0e69a0(47, 79, 79, 0.404);
     color: #fff;
     margin-left: 30px;
 }
