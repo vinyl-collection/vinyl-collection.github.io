@@ -2,7 +2,7 @@
 import { html } from 'https://unpkg.com/lit-html?module';
 
 
-const dashboardTemplate = (data) => html`
+const dashboardTemplate = (data, yHandler) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Welcome to my collection</h1>
@@ -11,6 +11,7 @@ const dashboardTemplate = (data) => html`
 </div>
 <div class="row space-top">
     ${data.map(itemTemplate)}
+    <a @click=${yHandler} class="btn btn-info">Show More</a>
 </div>`
 
 const itemTemplate = (item) => html`
@@ -27,6 +28,7 @@ const itemTemplate = (item) => html`
             </div>
         </div>
     </div>
+    
 </div>`;
 
 export async function homePage(ctx) {
@@ -40,23 +42,26 @@ export async function homePage(ctx) {
     records.limit(limit)
     limit += 2
     const allRecords = await records.find()
-   
-    ctx.render(dashboardTemplate(allRecords))
     
-        async function yHandler() {
-            let container = document.querySelector('.container')
-            let contentHeight = container.offsetHeight;
-            let yOffset = window.pageYOffset;
-            let y = yOffset + window.innerHeight;
+    ctx.render(dashboardTemplate(allRecords, yHandler))
+    
+    
+    async function yHandler() {
+            // let container = document.querySelector('.container')
+            // let contentHeight = container.offsetHeight;
+            // let yOffset = window.pageYOffset;
+            // let y = yOffset + window.innerHeight;
             
-            if (y >= contentHeight) {
+            // console.log(y);
+            // console.log('content' + contentHeight);
+            // if (y >= contentHeight) {
+            //  }   
                 records.limit(limit)
                 const allRecords = await records.find()
-                ctx.render(dashboardTemplate(allRecords))
+                ctx.render(dashboardTemplate(allRecords, yHandler))
                 limit++
-            }
-            return
+            
+            
         }
         
-        window.onscroll = yHandler;
 }

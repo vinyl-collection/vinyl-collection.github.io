@@ -31,7 +31,7 @@ export async function catalogPage(ctx){
      
      ctx.render(catalogTemplate(allRecords, count))
      limit += 2
-    window.onscroll = yHandler;
+   // window.onscroll = yHandler;
     
   async  function yHandler(){
         let container = document.querySelector('.container')

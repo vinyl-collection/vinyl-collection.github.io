@@ -9,8 +9,8 @@ const detailTemplate = (item, onDelete, isOwner) => html`<div class="row space-t
 </div>
 <div class="row space-top">
     <div class="col-md-4">
-        <div class="card text-white bg-primary">
-            <div class="card-body">
+        <div class="text-white bg-primary">
+            <div class="card-body  detailsBug">
                 <img class="detailsImg" src="${item.img}" />
             </div>
         </div>
@@ -49,7 +49,7 @@ export async function detailPage(ctx) {
 
     
     ctx.render(detailTemplate(album, onDelete, isOwner))
-
+    
     async function onDelete() {
         const confirmed = confirm('Are you sure you want to delete this item?')
         if (confirmed) {

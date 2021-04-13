@@ -231,8 +231,9 @@ img {
 }
 
 .detailsImg {
-    width: 300px;
+    width: 400px;
 height: 400px;
+
 }
 /* Catalog */
 h3.no-articles {
@@ -277,3 +278,7 @@ h3.no-articles {
     margin-left: 40%;
 }
 
+.detailsBug {
+    background-color: #094162;
+    background-clip: ;
+}
