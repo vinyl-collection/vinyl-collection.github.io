@@ -1,5 +1,5 @@
 // import { html } from '../../node_modules/lit-html/lit-html.js';
-import {html, render} from 'https://unpkg.com/lit-html?module';
+import {html} from 'https://unpkg.com/lit-html?module';
 import { login } from '../api/data.js'
 
 const loginTemplate = (onSubmit, errorMsg, invalidEmail, invalidPass) => html`

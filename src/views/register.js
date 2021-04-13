@@ -1,5 +1,6 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+// import { html } from '../../node_modules/lit-html/lit-html.js';
 import { register } from '../api/data.js'
+import {html} from 'https://unpkg.com/lit-html?module';
 
 
 
