@@ -89,7 +89,7 @@ export async function register(username, password) {
             'X-Parse-Application-Id': 'O9536xcOJvMSZHH5vnqYtvmLvMKp0WgAMRiZYJa6',
             'X-Parse-REST-API-Key': 'Bxn7IjJ2Q94FLIJAQW0IYOIBlSOniIuHXN4eNFcw',
             'X-Parse-Revocable-Session': '1',
-            'Content-Type': 'application / json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ username, password })
 
